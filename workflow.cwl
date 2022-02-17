@@ -38,7 +38,7 @@ steps:
         source: "#submitterUploadSynId"
       # TODO: replace `valueFrom` with the admin user ID or admin team ID
       - id: principalid
-        valueFrom: "3379097"
+        valueFrom: "3443757"
       - id: permissions
         valueFrom: "download"
       - id: synapse_config
@@ -52,7 +52,7 @@ steps:
         source: "#adminUploadSynId"
       # TODO: replace `valueFrom` with the admin user ID or admin team ID
       - id: principalid
-        valueFrom: "3379097"
+        valueFrom: "3443757"
       - id: permissions
         valueFrom: "download"
       - id: synapse_config
@@ -79,7 +79,7 @@ steps:
     in:
       - id: synapse_config
         source: "#synapseConfig"
-    out: 
+    out:
       - id: docker_registry
       - id: docker_authentication
 
@@ -88,7 +88,7 @@ steps:
     in:
       # TODO: replace `valueFrom` with the Synapse ID to the challenge goldstandard
       - id: synapseid
-        valueFrom: "syn18081597"
+        valueFrom: "syn27130810"
       - id: synapse_config
         source: "#synapseConfig"
     out:
@@ -172,7 +172,7 @@ steps:
         default: true
       # TODO: replace `valueFrom` with the absolute path to the data directory to be mounted
       - id: input_dir
-        valueFrom: "/tmp"
+        valueFrom: "/Users/vchung/Desktop/autoChallenge/test/data"
       - id: docker_script
         default:
           class: File
@@ -226,7 +226,7 @@ steps:
       - id: results
       - id: status
       - id: invalid_reasons
-  
+
   email_validation:
     run: https://raw.githubusercontent.com/Sage-Bionetworks/ChallengeWorkflowTemplates/v3.1/cwl/validate_email.cwl
     in:
@@ -278,11 +278,11 @@ steps:
         source: "#run_docker/predictions"
       - id: goldstandard
         source: "#download_goldstandard/filepath"
-      - id: check_validation_finished 
+      - id: check_validation_finished
         source: "#check_status/finished"
     out:
       - id: results
-      
+
   email_score:
     run: https://raw.githubusercontent.com/Sage-Bionetworks/ChallengeWorkflowTemplates/v3.1/cwl/score_email.cwl
     in:
@@ -313,4 +313,3 @@ steps:
       - id: previous_annotation_finished
         source: "#annotate_validation_with_output/finished"
     out: [finished]
- 
